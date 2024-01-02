@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: nvcc build active file",
+			"command": "/usr/bin/nvcc",
+			"args": [
+				"-arch=sm_50",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"${file}",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$nvcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/nvcc"
+		}
+	]
+}
