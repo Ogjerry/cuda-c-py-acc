@@ -154,8 +154,8 @@ int main(int argc, char const *argv[])
     cudaMemcpy(d_MatB, h_B, n_bytes, cudaMemcpyHostToDevice);
 
     // invoke kernel at host side
-    int dimx = 32;
-    int dimy = 32;
+    int dimx = 16;
+    int dimy = 16;
     dim3 block(dimx, dimy);
     dim3 grid((nx + block.x - 1)/block.x, (ny + block.y - 1) / block.y);
 
