@@ -37,9 +37,9 @@ $(PR):
 # RUN
 
 runall:
+	./$(PR) && ./$(RU)
 
-
-prrun:
+run:
 	./$(PR)
 
 # remake && run pr
@@ -51,15 +51,21 @@ rpr:
 ## Memory Operations
 
 
+PRG = ru # Program to run
 
 # memory read efficiency
-.PHONY: inst_warp effic load occ ef div freq
+.PHONY: inst_warp effic load occ ef div freq stall_sync
+
+# warp stalling diagnostic
+st_sync:
+	sudo nvprof --metrics stall_sync ./$(PRG)
+
 
 # instruction per warp (reduction as instance)
 inst_warp:
-	sudo nvprof --metrics inst_per_warp ./$(PR)
+	sudo nvprof --metrics inst_per_warp ./$(PRG)
 eff_red:
-	sudo nvprof --metrics gld_throughput ./$(PR)
+	sudo nvprof --metrics gld_throughput ./$(PRG)
 
 
 
